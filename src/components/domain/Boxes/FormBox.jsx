@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { Grid } from "@mui/material";
+import { Box, Grid, TextField, Typography } from "@mui/material";
 import CTextField from "../../ui/form/CTextField";
 import FORMIK_PROPTYPES from "../../../modelsFormik/FormikProps";
 import UploadImg from "../../ui/UploadImg/UploadImg";
+import styles from './FormBox.module.scss';
 
 const FormBox = function ({
 	onSubmit,
@@ -13,8 +14,7 @@ const FormBox = function ({
 	box
 }) {
 
-	const [img, setImg] = useState(null);
-	console.log(box);
+	const [img, setImg] = useState('');
 
 	const VALIDATION = Yup.object().shape({
 		name: Yup.string().required('Campo obligatorio'),
@@ -37,7 +37,7 @@ const FormBox = function ({
 		>
 			{(formik) => (
 			<Form>
-				<Grid container columnSpacing={1} rowSpacing={2}>
+				<Grid container columnSpacing={4} rowSpacing={2}>
 					<Grid item xs={12} >
 						<CTextField
 							label="Nombre"
@@ -68,11 +68,29 @@ const FormBox = function ({
 							formik={formik}
 						/>
 					</Grid>
-					<Grid item xs={6}>
-								<UploadImg 
-								updateImg={setImg}
+					<Grid item xs={12} mt={2}>
+					{!box ? (
+						<UploadImg 
+						  updateImg={setImg}
+							title="agregar imagen del producto"
+							subtitle='* Te recomendamos subir una imagen horizontal'
+						/>
+					):(
+						<Box className={styles.uploadimgcontainer}>
+							<Box className={styles.imgcontainer}>
+								<img 
+									src={`https://hungryheroesstorage.blob.core.windows.net/images/${box.imageUrl}`} 
+									alt="imagen del producto"
 								/>
-							</Grid>
+							</Box>
+							<UploadImg 
+								updateImg={setImg}
+								type="icon"
+								isEdit
+						/>
+						</Box>
+					)}
+					</Grid>
 				</Grid>
 			</Form>
 		)}

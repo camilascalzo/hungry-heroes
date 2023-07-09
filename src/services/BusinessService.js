@@ -13,12 +13,13 @@ const getBusinessById = (id) => {
 };
 
 const editBusiness = (id, body, accountId) => {
+	let urlService = apiUrl.getUrlService('business.editBusiness');
+	urlService = urlService.replace(':id', id);
+	
 	const bodyAfter = {	...body };
 	bodyAfter.email = null;
 	bodyAfter.accountId = parseInt(accountId);
 	bodyAfter.postalCode = parseInt(body.postalCode);
-	let urlService = apiUrl.getUrlService('business.editBusiness');
-	urlService = urlService.replace(':id', id);
 	return api.put(urlService, bodyAfter);
 	
 };

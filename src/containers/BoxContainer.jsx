@@ -30,8 +30,10 @@ const BoxContainer = function () {
 	const [image, setImage] = useState();
 
 	useEffect(() => {
-		console.log("IMAGEN", image)
-	}, [image])
+		console.log("IMAGEN", image);
+		console.log("BOX", box);
+		console.log(boxes);
+	}, [image, box, boxes])
 	
 	useEffect(() => {
 		setLoading(true);
@@ -64,10 +66,10 @@ const BoxContainer = function () {
 		console.log(values, image)
 		ProductService.createProduct(businessId, values, image)
 		.then((response) => {
-			console.log(response);
 			setSnackbar({message: 'El box fue creado correctamente', severity: 'success'})
 			setBoxes((prevBoxes) => [...prevBoxes, response]);
 			setLoading(false);
+			navigate(0);
 		})
 		.catch((error) => {
 			console.log(error);
@@ -156,7 +158,7 @@ const BoxContainer = function () {
 					key={box.productId}
 					title={box.name}
 					alt={`Logo de ${box.name}`}
-					img={box.imageUrl}
+					img={`https://hungryheroesstorage.blob.core.windows.net/images/${box.imageUrl}`}
 					//hay que definir cant de caracteres
 					description={box.description}
 					stock={box.stock}

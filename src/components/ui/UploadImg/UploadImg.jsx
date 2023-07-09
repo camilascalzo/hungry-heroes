@@ -1,14 +1,19 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Grid, Icon, Typography } from '@mui/material';
 import { useDropzone } from 'react-dropzone';
 import useSnackbar from '../../../hooks/useSnackbar';
+import styles from './UploadImg.module.scss';
+import { AddAPhotoOutlined, EditOutlined } from '@mui/icons-material';
+import CIconButton from '../Button/CIconButton';
+import CButton from '../Button/CButton';
 
 const UploadImg = function({
-	// formik,
-	// name,
-	// disabled,
 	updateImg,
+	type,
+	isEdit,
+	title,
+	subtitle
 }) {
 
 	const [selectedImg, setSelectedImg] = useState();
@@ -39,13 +44,59 @@ const UploadImg = function({
 	return (
 		<Grid {...getRootProps()}>
 			<input {...getInputProps()}/>
-			<Box>
-				<Typography>Agregar archivo</Typography>
-			</Box>
-			{selectedImg && (
-				<Box>
-					{/* <img src={selectedImg}></img> */}
-					<Typography>{selectedImg.path}</Typography>
+			{!selectedImg ? (
+				<>
+				{type === 'text' && (
+					<>
+					<Box className={styles.btncontainer}>
+						{/* <Typography 
+						  variant='button'
+							className={styles.btn}>
+								{title}
+						</Typography> */}
+						{/* <Icon><AddAPhotoOutlined /></Icon> */}
+					<CButton
+					  endIcon={<AddAPhotoOutlined color='error'/>}
+						title={title}
+						variant='text'
+						sx={{fontSize: '1.2rem', opacity: '0.7', textAlig: 'right'}}
+					/>
+					<Typography 
+					  variant='caption'>
+							{subtitle}
+					</Typography>
+					</Box>
+					</>
+				)}
+				{type === 'icon' && (
+					<CIconButton 
+					  icon={<EditOutlined />}
+						title="cambiar imagen"
+					/>
+				)}
+				</>
+
+			):(
+				<Box className={styles.selectedimgcontainer}>
+					{isEdit ? (
+						<Box className={styles.iseditcontainer}>
+							<img 
+							  src={URL.createObjectURL(selectedImg)}
+								alt="imagen del producto"
+							/>
+					</Box>
+					):(
+						<Box className={styles.isnoteditcontainer}>
+							<img
+							  src={URL.createObjectURL(selectedImg)}
+								alt="imagen del producto"
+							/>
+						</Box>
+					)}
+					<CIconButton 
+					  icon={<EditOutlined />}
+						title="cambiar imagen"
+					/>
 				</Box>
 			)}
 		</Grid>
@@ -53,7 +104,18 @@ const UploadImg = function({
 };
 
 UploadImg.propTypes = {
-	updateImg: PropTypes.func.isRequired
+	updateImg: PropTypes.func.isRequired,
+	img: PropTypes.objectOf(PropTypes.any),
+	type: PropTypes.oneOf(['icon', 'text']),
+	title: PropTypes.string,
+	subtitle: PropTypes.string
+};
+
+UploadImg.defaultProps = {
+	img: null,
+	type: 'text',
+	title: 'agregar imagen',
+	subtitle: null
 };
 
 export default UploadImg;

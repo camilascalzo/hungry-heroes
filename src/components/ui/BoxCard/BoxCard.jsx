@@ -46,6 +46,10 @@ const BoxCard = function ({
 	});
 
 	useEffect(() => {
+		console.log("BOXCARD", img, typeof img)
+	}, [img])
+
+	useEffect(() => {
 		const stockOptions = [];
 		for (let i = 1; i <= stock; i++) {
 			stockOptions.push({
@@ -65,11 +69,13 @@ const BoxCard = function ({
 	return (
 		<Box className={styles.container}>
 			<Card className={styles.card}>
-				<CardMedia
-					className={styles.img}
-					image={img}		
-					alt={alt}
-				/>
+				<Box className={styles.imgcontainer}>
+					<CardMedia
+						className={styles.cardmedia}
+						image={img}		
+						alt={alt}
+					/>
+				</Box>
 				<CardContent className={styles.cardcontent}>
 					<Typography className={styles.cardtitle}
 					>
@@ -90,12 +96,9 @@ const BoxCard = function ({
 								</Grid>
 								<Grid item xs={12} mx={6} mt={2}>
 									<Typography className={styles.stock}>
-										stock: <span>{stock}</span>
+										stock:<span>{stock}</span>
 									</Typography>
 								</Grid>
-								<Grid item xs={6}>
-								<UploadImg />
-							</Grid>
 								</>
 							):(
 								<>
@@ -145,12 +148,14 @@ const BoxCard = function ({
 					<>
 					<Box className={styles.state}>
 						<Typography>sin publicar</Typography>
-					<CIconButton
-					icon={<InfoRounded />}
-					size="large"
-					title="Completá tu perfil y los boxes serán publicados"
-					onClick={() => navigate(ROUTES_ENUM.PROFILE)}
-					/>
+						<CIconButton
+							disableFocusRipple
+							disableRipple
+							icon={<InfoRounded />}
+							size="large"
+							title="Completá tu perfil y los boxes serán publicados"
+							onClick={() => navigate(ROUTES_ENUM.PROFILE)}
+						/>
 					</Box>
 					</>
 				): null}

@@ -8,18 +8,27 @@
 	.card {
 		box-shadow: 0 3px 6px #0000001c;
 		width: 380px;
-		height: 500px;
+		height: 530px;
 		display: flex;
 		flex-direction: column;
 		&:hover {
 			transform: scale(1.1)
 		}
 
-		.img {
-			height: 100%;
+		.imgcontainer {
 			height: 150px;
-			background-size: cover;
-			background-position: top;
+			width: 380px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			background-color: $secondary;
+
+			.cardmedia {
+				background-size: cover;
+				background-position: top;
+				height: 150px;
+				opacity: 0.9;
+			}
 		}
 
 		.cardcontent {
@@ -53,11 +62,8 @@
 				text-align: left;
 
 				span {
-					background-color: $secondary;
-					padding: 4px 12px;
-					color: $primary;
-					border-radius: 100%;
-					font-weight: 900;
+					border-bottom: 3px solid $blue;
+					padding: 0 0.8rem;
 				}
 			}
 		}

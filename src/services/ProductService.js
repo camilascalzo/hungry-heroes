@@ -32,9 +32,6 @@ return api.post(urlService, formData, {
 };
 
 const editProduct = (businessId, body, image) => {
-	// const bodyAfter = {	...body };
-	// bodyAfter.userBusinessId = businessId;
-	// bodyAfter.productId = null;
 	let urlService = apiUrl.getUrlService('product.editProduct');
 	urlService = urlService.replace(':id', body.productId);
 

@@ -59,6 +59,8 @@ const CDialog = function({
 					<CIconButton
 						icon={<Close className={styles.closeicon}/>}
 						onClick={closeModal}
+						disableFocusRipple
+						disableRipple
 					/>
 				</DialogTitle>
 				<Divider className={styles.divider}/>
@@ -71,7 +73,7 @@ const CDialog = function({
 							type="submit"
 							title={btnDialogTitle}
 							onClick={handleClick}
-							sx={{fontSize: '1.2rem'}}
+							sx={{fontSize: '1.2rem', marginTop: '2rem'}}
 						/>
 					</DialogActions>
 				</DialogContent>

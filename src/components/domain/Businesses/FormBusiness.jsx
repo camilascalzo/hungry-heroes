@@ -26,8 +26,7 @@ const FormBusiness = function({
 	const [enableBtn, setEnableBtn] = useState(false);
 	const setLoading = useLoading();
 	const setSnackbar = useSnackbar();
-	// TODO
-	// const [selectedImage, setSelectedImage] = useState();
+	const [img, setImg] = useState('');
 	
 	const VALIDATION = Yup.object().shape({
 		fantasyName: Yup.string().required('Campo obligatorio'),
@@ -68,7 +67,7 @@ const FormBusiness = function({
 	
 	const handleSubmit = (values) => {
 		setLoading(true);
-		BusinessService.editBusiness(business.userBusinessId, values, accountId)
+		BusinessService.editBusiness(business.userBusinessId, values, accountId, img)
 		.then(() => {
 			setLoading(false);
       setSnackbar({message: 'El perfil se actualizó correctamente', severity: 'success'});
@@ -111,6 +110,12 @@ const FormBusiness = function({
 				{(formik) => (
 					<Form onChange={handleChange}>
 						<Grid container columnSpacing={5} rowSpacing={5}>
+							<Grid item xs={12}>
+								<UploadImg 
+								  title="agregar logo"
+									updateImg={setImg}
+								/>
+							</Grid>
 							<Grid item xs={6}>
 								<CTextField
 									disabled={disabledField}
@@ -145,7 +150,7 @@ const FormBusiness = function({
 									formik={formik}
 								/>
 							</Grid>
-							<Grid item xs={12}>
+							<Grid item xs={6}>
 								<CTextField
 									disabled={disabledField}
 									label="Dirección"
@@ -153,7 +158,7 @@ const FormBusiness = function({
 									formik={formik}
 								/>
 							</Grid>
-							<Grid item xs={6}>
+							<Grid item xs={3}>
 								<CTextField
 									disabled={disabledField}
 									label="Código postal"
@@ -161,7 +166,7 @@ const FormBusiness = function({
 									formik={formik}
 								/>
 							</Grid>
-							<Grid item xs={6}>
+							<Grid item xs={3}>
 								<CAutocomplete
 									disabled={disabledField}
 									label="Barrio"
@@ -203,10 +208,6 @@ const FormBusiness = function({
 									name="email"
 									formik={formik}
 								/>
-							</Grid>
-							{/*// TODO upload imágenes */}
-							<Grid item xs={6}>
-								<UploadImg />
 							</Grid>
 							<Box  className={styles.btncontainer}>
 								{(!enableBtn && (
