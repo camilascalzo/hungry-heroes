@@ -22,6 +22,7 @@ import ResetPassPage from '../pages/ResetPassPage';
 import BoxPageForClient from '../pages/BoxPageForClient';
 // import environments from '../api/environments';
 import Spinner from '../components/layout/Spinner/Spinner';
+import VerifyRegistrationTokenPage from '../pages/VerifyRegistrationTokenPage';
 
 // const { IS_DEVELOPMENT } = environments;
 
@@ -76,11 +77,11 @@ const CRoutes = function () {
 				element: <CreateUserConfirmationPage />,
 				errorElement: <ErrorPage />
 			},
-			// {
-			// 	path: ROUTES_ENUM.AUTH_EMAIL_SENT,
-			// 	element: <NoRequireAuth><EmailSent /></NoRequireAuth>
-			// 	// errorElement
-			// },
+			{
+				path: ROUTES_ENUM.VERIFY_REGISTRATION_TOKEN,
+				element: <VerifyRegistrationTokenPage />,
+				errorElement: <ErrorPage />
+			},
 			{
 				path: '/',
 				element: <RequireAuth><Layout /></RequireAuth>,

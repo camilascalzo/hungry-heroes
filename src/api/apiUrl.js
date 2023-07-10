@@ -1,12 +1,14 @@
 import API_BASE_URL from './environments';
 const API = 'https://hungry-heroes.azurewebsites.net';
+const FRONT = 'https://hungry-heroes.vercel.app';
 const apiUrl = {
 	auth: {
 		login: `${API}/Accounts/login`,
 		register: `${API}/Accounts/register`,
 		requestPass: `${API}/Accounts/forgot-password`,
 		deleteAccount: `${API}/Accounts/:id`,
-		changePassword: `${API}/Accounts/change-password`
+		changePassword: `${API}/Accounts/change-password`,
+		verifyRegistrationToken: `${FRONT}/Accounts/verify-email`
 	},
 	business: {
 		getBusinesses: `${API}/Business/All`,

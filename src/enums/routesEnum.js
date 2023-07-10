@@ -17,6 +17,7 @@ const ROUTES_ENUM = Object.freeze({
 	BOXES: '/boxes',
 	BOXES_FOR_CLIENT:'/businessboxes',
 	SALES: '/sales',
+	VERIFY_REGISTRATION_TOKEN: 'Accounts/verify-email',
 	
 	AUTH_EMAIL_SENT: '/emailsent',
 });
