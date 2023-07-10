@@ -18,8 +18,19 @@ const makeOptionsObject = (objectEnum, name = 'name', value = 'id') => {
   return options;
 };
 
+const formatPrice = (price) => {
+	return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+};
+
+const formatDate = (dateString) => {
+	const date = new Date(dateString);
+	return date.toLocaleDateString('en-GB');
+};
+
 export {
   makeOptions,
-	makeOptionsObject
+	makeOptionsObject,
+	formatDate,
+	formatPrice
 };
 

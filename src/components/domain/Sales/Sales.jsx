@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 // import salesList from '../../../sales.json';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
@@ -6,18 +6,35 @@ import { Box, Paper,Typography } from '@mui/material';
 import CTextField from '../../ui/form/CTextField';
 import styles from './Sales.module.scss';
 import CButton from '../../ui/Button/CButton';
+import SaleService from '../../../services/SaleService';
+import { setSnackbar } from '../../../api/api';
+import { formatDate, formatPrice } from '../../../utils/utils';
 
 const Sales = function({
 	userType,
 	salesList
 }) {
 
+	// const [isDelivered, setIsDelivered] = useState();
+
 	const VALIDATION = Yup.object().shape({
 		code: Yup.number().typeError("solo números").required('Campo obligatorio'),
 	});
 
-	const onSubmit = () => {
-		alert("llama al servicio para validar el código")
+	// TODO traer de sale
+	const saleId=2;
+
+	const onSubmit = (values) => {
+		console.log(values)
+		console.log(saleId)
+		SaleService.verifySale(values.code, saleId)
+		.then((response) => {
+			console.log(response)
+			setSnackbar("El código fue correstamente validado")
+		})
+		.catch((error) => {
+			console.log(error);
+		})
 	}
 
 	return(
@@ -36,7 +53,7 @@ const Sales = function({
 						<Box className={styles.datacontainer}>
 							<Typography className={styles.title}>Fecha</Typography>
 							<Typography className={styles.text}>
-								{sale.dateSale}
+							{formatDate(sale.dateSale)}
 							</Typography>
 						</Box>
 						<Box className={styles.datacontainer}>
@@ -57,11 +74,9 @@ const Sales = function({
 						</Box>
 						<Box className={styles.datacontainer}>
 							<Typography className={styles.title}>Total</Typography>
-							<Typography className={styles.text}>{sale.total}</Typography>
-						</Box>
-						<Box className={styles.datacontainer}>
-							<Typography className={styles.title}>Usuario</Typography>
-							<Typography className={styles.text}>{sale.buyer}</Typography>
+							<Typography className={styles.text}>
+								${formatPrice(sale.total)}
+							</Typography>
 						</Box>
 						<Box>
 							{userType === "Client" ? (
@@ -82,7 +97,7 @@ const Sales = function({
 								<Box className={styles.datacontainer}>
 									<Formik
 										initialValues={{
-											code: sale.code,
+											code: sale.delivered ? sale.code : ''
 										}}
 										validationSchema={VALIDATION}
 										onSubmit={onSubmit}
@@ -97,9 +112,9 @@ const Sales = function({
 														fullWidth= {false}
 														formik={formik}
 														className={styles.data}
-														disabled={formik.initialValues.code !==""}
+														disabled={sale.delivered}
 													/>
-													{formik.initialValues.code ==="" && (
+													{!sale.delivered && (
 														<CButton
 															title="Validar"
 															onClick={formik.handleSubmit}

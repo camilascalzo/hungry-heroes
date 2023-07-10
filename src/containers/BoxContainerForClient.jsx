@@ -23,26 +23,30 @@ const BoxContainerForClient = function () {
 	const boxes = location.state;
 	const setSnackbar = useSnackbar();
 
+	useEffect(() => {
+		console.log(boxes);
+	}, [boxes]);
+
 
 	const handleBuyBox = (values,box) => {
 		setBox(box);
 		setQuantity(values.quantity)
 		console.log(box)
 		console.log(values)
-		// borrar este set open modal
-		setOpenModalBuy(true);
-		// setLoading(true);
-		// SaleService.modifyStock(box.productId, quantity)
-		// .then((response) => {
-		// 	console.log(response);
-		// 	setOpenModalBuy(true);
-		// 	setLoading(false);
-		// })
-		// .catch((error) => {
-		// 	console.log(error);
-		// 	setLoading(false);
-		// 	setSnackbar({message: error.message, severity: 'error'});
-		// })
+		// // borrar este set open modal
+		// setOpenModalBuy(true);
+		setLoading(true);
+			SaleService.modifyStock(box.productId, quantity)
+			.then((response) => {
+				console.log(response);
+				setOpenModalBuy(true);
+				setLoading(false);
+			})
+			.catch((error) => {
+				console.log(error);
+				setLoading(false);
+				setSnackbar({message: error.message, severity: 'error'});
+			})
 	}
 
 		const confirmPurchase = (values) => {
@@ -76,7 +80,7 @@ const BoxContainerForClient = function () {
 					key={box.productId}
 					title={box.name}
 					alt={`Logo de ${box.name}`}
-					img={box.imageUrl}
+					img={`https://hungryheroesstorage.blob.core.windows.net/images/${box.imageUrl}`}
 					//hay que definir cant de caracteres
 					description={box.description}
 					stock={box.stock}

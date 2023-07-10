@@ -21,11 +21,11 @@ const apiUrl = {
 	},
 	sales: {
 		createSale: `${API}/Sale`,
-		getSaleById: `${API}/Sale/:id`,
+		getSaleById: `${API}/Sale/GetDetails/:id`,
 		modifyStock: `${API}/Sale/Modify-Stock?idProduct=:id&quantity=:quantity`,
-		verifyStock: `${API}/Sale/Verify-Sale?code=:code&idSale=:id`,
+		verifySale: `${API}/Sale/Verify-Sale?code=:code&idSale=:id`,
 		getSalesByClientId: `${API}/Sale/Buys/:id`,
-		getSalesByBusinessId: `${API}/Sale/:id`,
+		getSalesByBusinessId: `${API}/Sale/GetSales/:id`,
 	}
 };
 

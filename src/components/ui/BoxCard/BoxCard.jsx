@@ -12,6 +12,7 @@ import { useFormik } from "formik";
 import * as Yup from 'yup';
 import styles from './BoxCard.module.scss';
 import UploadImg from "../UploadImg/UploadImg";
+import { formatPrice } from "../../../utils/utils";
 
 const BoxCard = function ({
 
@@ -60,12 +61,6 @@ const BoxCard = function ({
 		setOptions(stockOptions);
 	}, [stock]);
 
-	const formatPrice = (price) => {
-		return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-	};
-	
-	const formattedPrice = formatPrice(price);
-
 	return (
 		<Box className={styles.container}>
 			<Card className={styles.card}>
@@ -91,7 +86,7 @@ const BoxCard = function ({
 								<>
 								<Grid item xs={12} mx={6} mt={2}>
 								<Typography mt={2} className={styles.carddetails}>
-									${formattedPrice}
+									${formatPrice(price)}
 								</Typography>
 								</Grid>
 								<Grid item xs={12} mx={6} mt={2}>
@@ -104,7 +99,7 @@ const BoxCard = function ({
 								<>
 								<Grid item xs={6}>
 								<Typography mt={6} className={styles.carddetails}>
-									${formattedPrice}
+									${formatPrice(price)}
 								</Typography>
 								</Grid>
 								<Grid item xs={6} mt={6}>
@@ -138,7 +133,6 @@ const BoxCard = function ({
 						<CButton
 							title="Comprar"
 							sx={{fontSize: '1.1rem'}}
-							// onClick={(values) => onBuy(values)}
 							onClick={formik.handleSubmit} 
 
 						/>

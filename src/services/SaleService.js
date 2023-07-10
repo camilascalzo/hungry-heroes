@@ -31,9 +31,20 @@ const modifyStock = (id, quantity) => {
 	urlService = urlService.replace(':id', id);
 	urlService = urlService.replace(':quantity', quantity);
 
+	console.log(urlService);
+
 	return api.put(urlService);
-}
-// const verifyStock =
+};
+
+const verifySale = (code, id) => {
+	let urlService = apiUrl.getUrlService('sales.verifySale');
+	urlService = urlService.replace(':id', id);
+	urlService = urlService.replace(':code', code);
+
+	console.log(urlService)
+
+	return api.put(urlService);
+};
 
 const getSalesByClientId = (id) => {
 	let urlService = apiUrl.getUrlService('sales.getSalesByClientId');
@@ -55,5 +66,6 @@ export default {
 	getSaleById,
 	getSalesByBusinessId,
 	getSalesByClientId,
-	modifyStock
+	modifyStock,
+	verifySale
 }

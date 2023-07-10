@@ -10,17 +10,17 @@ const logout = () => {
 	localStorage.clear();
 };
 
-const register = (email, password, confirmPassword, role) => {
+const register = (body) => {
+	const bodyAfter = {...body};
+	bodyAfter.role = parseInt(body.role);
   const urlService = apiUrl.getUrlService('auth.register');
-  return api.post(urlService, email, password, confirmPassword, role );
-	// .then((response) => {
-	// 	console.log(response);
-	// 	console.log("SERVICIO", email, password, confirmPassword, role);
-	// })
-	// .catch((err) => {
-	// 	console.log(err);
-	// 	console.log("SERVICIO", email, password, confirmPassword, role);
-	// })
+	return api.post(urlService, bodyAfter)
+	.then(() => {
+		localStorage.setItem('storedEmail', bodyAfter.email);
+	})
+	.catch((error) => {
+		console.log(error)
+	})
 };
 
 const requestPass = (email) => {

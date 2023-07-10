@@ -35,10 +35,8 @@ const FormUser = function () {
 	});
 
 	const onRegister = (values) => {
-		const valuesAfter = {...values};
-		values.role = parseInt(values.role); 
 		setLoading(true);
-		AuthService.register(valuesAfter)
+		AuthService.register(values)
 		.then(() => {
 			navigate(ROUTES_ENUM.CREATE_ACCOUNT_CONFIRMATION);
 			setLoading(false);
@@ -128,7 +126,6 @@ const FormUser = function () {
 										type="submit"
 										title="Crear usuario"
 										sx={{fontSize: '1.2rem'}}
-										// onClick={onRegister}
 									/>
 							</Grid>
 						</Grid>

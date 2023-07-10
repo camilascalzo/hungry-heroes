@@ -10,7 +10,8 @@ const CreateUserConfirmation = function () {
 	const navigate = useNavigate();
 	// const [ searchParams ] = useSearchParams();
 	// const email = searchParams.get('email');
-	const email = "camila@email.com"
+	// const email = "camila@email.com"
+	const email = localStorage.getItem('storedEmail');
 
 	const reSend = () => {
 		alert("Llama al servicio requestPass")

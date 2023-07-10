@@ -21,7 +21,7 @@ const RequestPassConfirmation = function () {
 		.then((response) => {
 			console.log(response)
 			setLoading(false);
-			setSnackbar({message: 'El email fue enviado correctamente', severity: 'success'});
+			setSnackbar({message: 'El email fue reenviado correctamente', severity: 'success'});
 		})
 		.catch((error) => {
 			console.log(error);
