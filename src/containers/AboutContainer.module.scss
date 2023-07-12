@@ -111,6 +111,24 @@ $blue-light: #e0eefa;
 
 			}
 		}
+		.cardmediacontainer {
+			margin-top: 5rem;
+			width: 100%;
+			position: relative;
+			// padding-top: 56.25%;
+			padding-top: 30%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			.cardmedia {
+				position: absolute;
+				top: 0;
+				// left: 0;
+				width: 50%;
+				height: 100%;
+			}
+		}
 
 		.main {
 			display: flex;
@@ -118,7 +136,8 @@ $blue-light: #e0eefa;
 			align-items: center;
 			text-transform: lowercase;
 			position: relative;
-			padding-left: 3rem;
+
+		
 			
 
 			.imgcontainer {
@@ -215,6 +234,13 @@ $blue-light: #e0eefa;
 				padding: 0 1rem;
 				&:hover {
 					background-color:$blue;
+				}
+			}
+
+			.social {
+				padding: 0.5rem;
+				&:hover {
+					background-color:$tertiary;
 				}
 			}
 		}

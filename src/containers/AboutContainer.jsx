@@ -1,14 +1,17 @@
 import { useNavigate, Link } from 'react-router-dom';
 import world from '../media/world-woman.png';
 import logo from '../media/logo.png';
-import { Box, Typography, Icon } from '@mui/material';
+import { Box, Typography, Icon, CardMedia } from '@mui/material';
 import { AttachMoney, Campaign, Instagram, LinkedIn, Mail, MailOutline, Public, Store, WhatsApp } from '@mui/icons-material';
 import ROUTES_ENUM from '../enums/routesEnum';
 import CIconButton from '../components/ui/Button/CIconButton';
 
 import styles from './AboutContainer.module.scss';
+import CButton from '../components/ui/Button/CButton';
 
 const AboutContainer = function () {
+
+	const navigate = useNavigate();
 
   return (
     <Box className={styles.container}>
@@ -63,13 +66,21 @@ const AboutContainer = function () {
 					</Box>
 					</Box>
 				</Box>
+				<Box className={styles.cardmediacontainer}>
+						<CardMedia
+					className={styles.cardmedia}
+					component="iframe"
+					src="https://www.youtube.com/embed/xJ_fFLgGHiU"					
+				/>
+					</Box>
 				<Box className={styles.maintitle}>
 					<Typography>¿querés ayudar?</Typography>
 				</Box>
 				<Box className={styles.main}>
 					<Box className={styles.imgcontainer}>
 						<img src={world} />
-					</Box>
+						</Box>
+						
 					<Box className={styles.commercial}>
 						<Typography className={styles.commercialtitle}>registrate en <Link to={ROUTES_ENUM.AUTH_LOGIN} className={styles.link}>Hungry Heroes</Link></Typography>
 						<Box className={styles.client}>
@@ -115,6 +126,11 @@ const AboutContainer = function () {
 									<Typography className={styles.bullettext}>Ayudá al planeta reduciendo el volumen tus residuos</Typography>
 								</Box>
 							</Box>
+								<CButton
+									title="Ingresá"
+									onClick={() => navigate(ROUTES_ENUM.AUTH_LOGIN)}
+									sx={{fontSize: '2rem', marginTop: '3rem'}}
+								/>
 						</Box>
 					</Box>
 				</Box>
@@ -124,22 +140,20 @@ const AboutContainer = function () {
 					<img src={logo} alt="" />
 				</Box>
 				<Box className={styles.contact}>
-					<CIconButton>
-						{/* <MailOutline className={styles.icon}/> */}
+					<CIconButton disableFocusRipple disableRipple>
 						<Typography className={styles.text}>info@hungryheroes.com</Typography>
 					</CIconButton>
-					<CIconButton>
-						{/* <WhatsApp className={styles.icon}/> */}
+					<CIconButton disableFocusRipple disableRipple>
 						<Typography className={styles.text}>+54 911 1111 1111</Typography>
 					</CIconButton>
 				</Box>
 				
 				<Box className={styles.contact}>
-					<CIconButton>
-						<Instagram fontSize='large'/>
+					<CIconButton disableFocusRipple disableRipple>
+						<Instagram fontSize='large' className={styles.social}/>
 					</CIconButton>
-					<CIconButton>
-						<LinkedIn fontSize='large'/>
+					<CIconButton disableFocusRipple disableRipple>
+						<LinkedIn fontSize='large' className={styles.social}/>
 					</CIconButton>
 				</Box>
 			</Box>
