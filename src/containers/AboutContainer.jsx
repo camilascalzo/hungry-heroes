@@ -66,13 +66,15 @@ const AboutContainer = function () {
 					</Box>
 					</Box>
 				</Box>
-				<Box className={styles.cardmediacontainer}>
+				<Box className={styles.videocontainer}>
+					<Box className={styles.cardmediacontainer}>
 						<CardMedia
-					className={styles.cardmedia}
-					component="iframe"
-					src="https://www.youtube.com/embed/xJ_fFLgGHiU"					
-				/>
+							className={styles.cardmedia}
+							component="iframe"
+							src="https://www.youtube.com/embed/xJ_fFLgGHiU"					
+						/>
 					</Box>
+				</Box>
 				<Box className={styles.maintitle}>
 					<Typography>¿querés ayudar?</Typography>
 				</Box>
@@ -82,7 +84,7 @@ const AboutContainer = function () {
 						</Box>
 						
 					<Box className={styles.commercial}>
-						<Typography className={styles.commercialtitle}>registrate en <Link to={ROUTES_ENUM.AUTH_LOGIN} className={styles.link}>Hungry Heroes</Link></Typography>
+						<Typography className={styles.commercialtitle}>registrate en <Link to={ROUTES_ENUM.CREATE_ACCOUNT} className={styles.link}>Hungry Heroes</Link></Typography>
 						<Box className={styles.client}>
 							<Box className={styles.bulletwrapper}>
 								<Box className={styles.bullet}>

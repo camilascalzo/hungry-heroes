@@ -30,8 +30,9 @@ const FormBusiness = function({
 	console.log(business)
 
 	useEffect(() => {
+		console.log(business)
 		console.log(img)
-	}, [img])
+	}, [img, business])
 	
 	const VALIDATION = Yup.object().shape({
 		fantasyName: Yup.string().required('Campo obligatorio'),
@@ -119,7 +120,7 @@ const FormBusiness = function({
 									<Box className={styles.uploadimgcontainer}>
 										<Box  className={styles.imgcontainer}>
 											<img
-											  src={`https://hungryheroesstorage.blob.core.windows.net/images/${business.imageUrl}`}
+											  src={business.imageUrl}
 											  alt="logo del comercio"	
 											/>
 										</Box>

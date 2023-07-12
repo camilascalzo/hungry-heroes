@@ -29,7 +29,7 @@ const editBusiness = (id, body, accountId, image) => {
 	formData.append('cuit', body.cuit);
 	formData.append('alias', body.alias);
 	formData.append('web', body.web);
-	formData.append('imageUrl', image);
+	formData.append('image', image);
 	console.log("IMAGEN QUE SE MANDA:", image)
 	console.log(formData);
 	return api.put(urlService, formData, {

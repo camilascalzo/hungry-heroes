@@ -53,7 +53,7 @@ const BusinessContainer = function () {
 					title={business.fantasyName}
 					subtitle={business.slogan}
 					alt={`Logo de ${business.fantasyName}`}
-					logo={logo}
+					logo={`https://hungryheroesstorage.blob.core.windows.net/images/${business.imageUrl}`}
 					// hay que definir cant de caracteres
 					description={business.description}
 					onSelect={() => handleSelectBusiness(business.userBusinessId)}

@@ -21,6 +21,10 @@ const UploadImg = function({
 	const [selectedImg, setSelectedImg] = useState();
 	const setSnackbar = useSnackbar();
 
+	useEffect(() => {
+		console.log(selectedImg)
+	}, [selectedImg])
+
 	const onDrop = useCallback((acceptedFile) => {
 		if(acceptedFile.length === 0) {
 			setSnackbar('Solo podés cargar una(1) imagen');
@@ -84,14 +88,14 @@ const UploadImg = function({
 						<Box className={styles.iseditcontainer}>
 							<img 
 							  src={URL.createObjectURL(selectedImg)}
-								alt="imagen del producto"
+								alt="imagen"
 							/>
 					</Box>
 					):(
 						<Box className={styles.isnoteditcontainer}>
 							<img
 							  src={URL.createObjectURL(selectedImg)}
-								alt="imagen del producto"
+								alt="imagen"
 							/>
 						</Box>
 					)}
