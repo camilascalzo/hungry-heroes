@@ -1,4 +1,4 @@
-import React, {  useRef, useState } from 'react';
+import React, {  useEffect, useRef, useState } from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { Grid, Typography } from '@mui/material';
@@ -27,13 +27,17 @@ const FormBusiness = function({
 	const setLoading = useLoading();
 	const setSnackbar = useSnackbar();
 	const [img, setImg] = useState('');
+	console.log(business)
+
+	useEffect(() => {
+		console.log(img)
+	}, [img])
 	
 	const VALIDATION = Yup.object().shape({
 		fantasyName: Yup.string().required('Campo obligatorio'),
 		businessName: Yup.string().required('Campo obligatorio'),
 		slogan: Yup.string().required('Campo obligatorio'),
 		description: Yup.string().required('Campo obligatorio'),
-	// 	// logo
 		address: Yup.string()
   .required('Campo obligatorio'),
 	postalCode: Yup.string()
@@ -66,6 +70,7 @@ const FormBusiness = function({
 	};
 	
 	const handleSubmit = (values) => {
+		console.log("IMAGEN QUE PASA AL SERVICIO: ", img);
 		setLoading(true);
 		BusinessService.editBusiness(business.userBusinessId, values, accountId, img)
 		.then(() => {
@@ -94,13 +99,12 @@ const FormBusiness = function({
 					businessName: business.businessName || '',
 					slogan: business.slogan || '',
 					description: business.description || '',
-					// logo: '',
 					address: business.address || '',
 					postalCode: business.postalCode || '',
 					location: business.location || '',
 					cuit: business.cuit || '',
 					alias: business.alias || '',
-					web: business.web || ''
+					web: business.web || '',
 				}}
 				validationSchema={VALIDATION}
 				onSubmit={handleSubmit}
@@ -111,10 +115,26 @@ const FormBusiness = function({
 					<Form onChange={handleChange}>
 						<Grid container columnSpacing={5} rowSpacing={5}>
 							<Grid item xs={12}>
-								<UploadImg 
-								  title="agregar logo"
-									updateImg={setImg}
-								/>
+								{business.activeProfile ? (
+									<Box className={styles.uploadimgcontainer}>
+										<Box  className={styles.imgcontainer}>
+											<img
+											  src={`https://hungryheroesstorage.blob.core.windows.net/images/${business.imageUrl}`}
+											  alt="logo del comercio"	
+											/>
+										</Box>
+										<UploadImg
+										  updateImg={setImg}
+											type="icon"
+											isEdit
+										/>
+									</Box>
+								):(
+									<UploadImg 
+										title="agregar logo"
+										updateImg={setImg}
+									/>
+								)}
 							</Grid>
 							<Grid item xs={6}>
 								<CTextField

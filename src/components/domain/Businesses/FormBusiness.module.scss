@@ -22,4 +22,27 @@
 		justify-content: center;
 		gap: 1rem;
 	}
+
+	.uploadimgcontainer {
+		display: flex;
+		align-items: flex-end;
+		margin-top: 1.5rem;
+		height: 100px;
+		overflow: hidden;
+		position: relative;
+	
+		.imgcontainer {
+			height: 100px;
+			width: 200px;
+			margin-right: 1rem;
+		
+			img {
+				height: 100%;
+				width: 100%;
+				object-fit: cover;
+			}
+		}
+	}
+
+
 }

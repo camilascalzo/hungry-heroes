@@ -37,7 +37,7 @@ const theme = createTheme ( {
   // h2 60px -light 300
   // h3 48px - normal 400
   // h4 34px - normal 400
-  // h5 24px - normal 400
+  // h5 24px - normal 400 (abajo cambio)
   // h6 20px - medium 500
   // subtitle1 16px - normal 400 (abajo cambio del weight)
   // subtitle2 14px - medium 500
@@ -57,7 +57,13 @@ const theme = createTheme ( {
       textTransform: 'lowercase',
 			letterSpacing: '-0.5px',
 			fontWeight: 900,
-    }
+    },
+		h5: {
+			fontWeight: 900,
+			textTransform: 'lowercase',
+			letterSpacing: '-0.5px',
+			fontSize: '1.1rem'
+		}
   },
 	components: {
 		MuiButton: {

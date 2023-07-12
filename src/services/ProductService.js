@@ -24,6 +24,9 @@ const createProduct = (businessId, body, image) => {
 	formData.append('price', parseInt(body.price));
 	formData.append('image', image);
 //  return api.post(urlService, bodyAfter);
+
+
+
 return api.post(urlService, formData, {
 	headers: {
 		'Content-type': 'multipart/form-data'
@@ -42,6 +45,7 @@ const editProduct = (businessId, body, image) => {
 	formData.append('stock', parseInt(body.stock));
 	formData.append('price', parseInt(body.price));
 	formData.append('image', image);
+	console.log("FORM DATA PRODUCTO", formData);
 
 	return api.put(urlService, formData, {
 		headers: {

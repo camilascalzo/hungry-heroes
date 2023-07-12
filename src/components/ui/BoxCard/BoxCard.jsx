@@ -15,7 +15,6 @@ import UploadImg from "../UploadImg/UploadImg";
 import { formatPrice } from "../../../utils/utils";
 
 const BoxCard = function ({
-
 	title,
 	description,
 	stock,
@@ -27,7 +26,6 @@ const BoxCard = function ({
 	onBuy,
 	userType,
 	activeProfile,
-	onSubmit,
 	formikRef
 }) {
 
@@ -41,14 +39,9 @@ const BoxCard = function ({
 	const formik = useFormik({
 		initialValues: { quantity:''},
 		validationSchema: VALIDATION,
-		// onSubmit: onSubmit,
 		onSubmit: onBuy,
 		innerRef: formikRef
 	});
-
-	useEffect(() => {
-		console.log("BOXCARD", img, typeof img)
-	}, [img])
 
 	useEffect(() => {
 		const stockOptions = [];
@@ -97,21 +90,28 @@ const BoxCard = function ({
 								</>
 							):(
 								<>
-								<Grid item xs={6}>
-								<Typography mt={6} className={styles.carddetails}>
-									${formatPrice(price)}
-								</Typography>
+								<Grid item xs={12}>
+								<Grid container justifyContent="center">
+									<Grid item xs={6}>
+										<Typography mt={6} className={styles.carddetails}>
+											${formatPrice(price)}
+										</Typography>
+									</Grid>
 								</Grid>
-								<Grid item xs={6} mt={6}>
-									<CSelect
-										name="quantity"
-										label="cantidad"
-										formik={formik}
-										selectOption={options}
-									>
-									</CSelect>
 							</Grid>
-								</>
+								 <Grid item xs={12}>
+								 <Grid container justifyContent="center">
+									 <Grid item xs={6} mt={4}>
+										 <CSelect
+											 name="quantity"
+											 label="cantidad"
+											 formik={formik}
+											 selectOption={options}
+										 />
+									 </Grid>
+								 </Grid>
+							 </Grid>
+							 </>
 							)}
 					</Grid>
 				</CardContent>

@@ -1,6 +1,13 @@
 import api from "../api/api";
 import apiUrl from "../api/apiUrl";
 
+const verifyAccount = (token) => {
+	let urlService = apiUrl.getUrlService('auth.verifyRegistrationToken');
+	urlService = urlService.replace(':token', token);
+
+	return api.post(urlService);
+}
+
 const login = (email, password) => {
 	const urlService = apiUrl.getUrlService('auth.login');
 	return api.post(urlService, { email, password });
@@ -71,5 +78,6 @@ export default {
 	restorePass,
 	requestPass,
 	changePassword,
-	deleteAccount
+	deleteAccount,
+	verifyAccount
 };

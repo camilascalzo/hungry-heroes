@@ -16,6 +16,8 @@ const UploadImg = function({
 	subtitle
 }) {
 
+	console.log(isEdit)
+
 	const [selectedImg, setSelectedImg] = useState();
 	const setSnackbar = useSnackbar();
 
@@ -70,7 +72,7 @@ const UploadImg = function({
 				)}
 				{type === 'icon' && (
 					<CIconButton 
-					  icon={<EditOutlined />}
+					  icon={<AddAPhotoOutlined />}
 						title="cambiar imagen"
 					/>
 				)}
@@ -94,7 +96,7 @@ const UploadImg = function({
 						</Box>
 					)}
 					<CIconButton 
-					  icon={<EditOutlined />}
+					  icon={<AddAPhotoOutlined />}
 						title="cambiar imagen"
 					/>
 				</Box>

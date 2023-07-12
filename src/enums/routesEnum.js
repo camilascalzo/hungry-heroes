@@ -5,8 +5,9 @@ const ROUTES_ENUM = Object.freeze({
 	CREATE_ACCOUNT_CONFIRMATION: '/create-account-confirmation',
 	AUTH_REQUEST_PASS: '/Accounts/forgot-password',
 	AUTH_REQUEST_PASS_CONFIRMATION: '/request-password-confirmation',
-	AUTH_RESET_PASS: '/Accounts/reset-password',
+	AUTH_RESET_PASS: '/Accounts/reset-password?token=:token',
 	ABOUT: '/about',
+	VERIFY_REGISTRATION_TOKEN: 'Accounts/verify-email', // ?token=:token
 
 	// auth required
 	AUTH_CHANGE_PASS: '/change-password',
@@ -17,7 +18,6 @@ const ROUTES_ENUM = Object.freeze({
 	BOXES: '/boxes',
 	BOXES_FOR_CLIENT:'/businessboxes',
 	SALES: '/sales',
-	VERIFY_REGISTRATION_TOKEN: 'Accounts/verify-email',
 	
 	AUTH_EMAIL_SENT: '/emailsent',
 });

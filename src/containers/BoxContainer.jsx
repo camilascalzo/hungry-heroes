@@ -85,12 +85,13 @@ const BoxContainer = function () {
 	};
 
 	const editBox = (values, image) => {
+		console.log("IMAGEN QUE SE MANDA AL SERVICIO", image);
 		setLoading(true);
 		ProductService.editProduct(businessId, values,image)
 		.then(() => {
 			setLoading(false);
 			setSnackbar({message: 'El box fue editado correctamente', severity: 'success'})
-			navigate(0);
+			// navigate(0);
 		})
 		.catch((error) => {
 			console.log(error)
