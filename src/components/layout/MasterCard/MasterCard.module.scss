@@ -37,7 +37,7 @@
 		.headerTitle {
 			margin-top: 2rem;
 			font-weight: 900;
-			font-size: 1.5rem;
+			font-size: 1.2rem;
 			letter-spacing: -1px;
 			text-transform: lowercase;
 		}
@@ -45,6 +45,13 @@
 		.headersubtitle {
 			letter-spacing: -0.5px;
 			text-transform: lowercase;
+		}
+
+		.btncontainer {
+			border-bottom: 10px solid $blue;
+			&:hover {
+				border-bottom: 10px solid $tertiary;
+			}
 		}
 	}
 }

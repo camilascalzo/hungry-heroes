@@ -114,29 +114,7 @@ const FormBusiness = function({
 			>
 				{(formik) => (
 					<Form onChange={handleChange}>
-						<Grid container columnSpacing={5} rowSpacing={5}>
-							<Grid item xs={12}>
-								{business.activeProfile ? (
-									<Box className={styles.uploadimgcontainer}>
-										<Box  className={styles.imgcontainer}>
-											<img
-											  src={business.imageUrl}
-											  alt="logo del comercio"	
-											/>
-										</Box>
-										<UploadImg
-										  updateImg={setImg}
-											type="icon"
-											isEdit
-										/>
-									</Box>
-								):(
-									<UploadImg 
-										title="agregar logo"
-										updateImg={setImg}
-									/>
-								)}
-							</Grid>
+						<Grid container columnSpacing={3} rowSpacing={3}>
 							<Grid item xs={6}>
 								<CTextField
 									disabled={disabledField}
@@ -171,8 +149,9 @@ const FormBusiness = function({
 									formik={formik}
 								/>
 							</Grid>
-							<Grid item xs={6}>
+							<Grid item xs={5}>
 								<CTextField
+								  multiline
 									disabled={disabledField}
 									label="Dirección"
 									name="address"
@@ -182,12 +161,12 @@ const FormBusiness = function({
 							<Grid item xs={3}>
 								<CTextField
 									disabled={disabledField}
-									label="Código postal"
+									label="Cód postal"
 									name="postalCode"
 									formik={formik}
 								/>
 							</Grid>
-							<Grid item xs={3}>
+							<Grid item xs={4}>
 								<CAutocomplete
 									disabled={disabledField}
 									label="Barrio"
@@ -195,7 +174,6 @@ const FormBusiness = function({
 									formik={formik}
 									options={makeOptionsObject(DISTRICT_ENUM, 'label', 'key')}
 									value={{ label: formik.values.location, value: formik.values.location }}
-
 								/>
 							</Grid>
 							<Grid item xs={6}>
@@ -230,11 +208,37 @@ const FormBusiness = function({
 									formik={formik}
 								/>
 							</Grid>
+							<Grid item xs={12}>
+								{business.activeProfile ? (
+									<Box className={styles.uploadimgcontainer}>
+										<Box  className={styles.imgcontainer}>
+											<img
+											  src={business.imageUrl}
+											  alt="logo del comercio"	
+											/>
+										</Box>
+										<UploadImg
+										  disabled={disabledField}
+										  noClick={disabledField}
+										  updateImg={setImg}
+											type="icon"
+											isEdit
+										/>
+									</Box>
+								):(
+									<UploadImg 
+									  disabled={disabledField}
+										noClick={disabledField}
+										title="agregar logo"
+										updateImg={setImg}
+									/>
+								)}
+							</Grid>
 							<Box  className={styles.btncontainer}>
 								{(!enableBtn && (
 									<CButton
-										title="editar"
-										sx={{fontSize: '1.2rem'}}
+										title="habilitar editar"
+										sx={{fontSize: '1rem'}}
 										onClick={handleEdit}
 									/>
 								))}
@@ -242,14 +246,14 @@ const FormBusiness = function({
 									<>
 									<CButton
 										title="cancelar"
-										sx={{fontSize: '1.2rem'}}
+										sx={{fontSize: '1rem'}}
 										onClick={handleCancel}
 									/>
 									<CButton
 									  type="submit"
 										title="guardar cambios"
 										variant="contained"
-										sx={{fontSize: '1.2rem'}}
+										sx={{fontSize: '1rem'}}
 									/>
 								</>
 								)}

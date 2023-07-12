@@ -6,9 +6,10 @@
 	align-content: center;
 
 	.card {
+		position: relative;
 		box-shadow: 0 3px 6px #0000001c;
-		width: 380px;
-		height: 580px;
+		width: 300px;
+		height: 410px;
 		display: flex;
 		flex-direction: column;
 		&:hover {
@@ -16,8 +17,8 @@
 		}
 
 		.imgcontainer {
-			height: 150px;
-			width: 380px;
+			height: 170px;
+			width: 300px;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
@@ -26,8 +27,20 @@
 			.cardmedia {
 				background-size: cover;
 				background-position: top;
-				height: 150px;
+				height: 170px;
 				opacity: 0.9;
+				display: flex;
+				flex-direction: column;
+
+				.pricetag {
+					background-color: rgba($color: $secondary, $alpha: 0.8);
+					margin-top: auto;
+					text-align: center;
+					padding: 0.5rem 0;
+					font-weight: 900;
+					font-size: 1.3rem;
+					color: $blue;
+				}
 			}
 		}
 
@@ -36,20 +49,20 @@
 			text-transform: lowercase;
 
 			.cardtitle {
-				font-size: 1.5rem;
+				font-size: 1.1rem;
 				font-weight: 900;
 				letter-spacing: -1px;
 				margin-bottom: 1rem;
 			}
 
 			.carddescription {
-				font-size: 1.2rem;
+				font-size: 0.9rem;
 				letter-spacing: -0.5px;
 			}
 
 			.carddetails {
 				font-weight: 900;
-				font-size: 1.2rem;
+				font-size: 1rem;
 				letter-spacing: -0.5px;
 				border: 3px solid $blue;
 				padding: 0.5rem 0;
@@ -57,13 +70,14 @@
 
 			.stock {
 				font-weight: 900;
-				font-size: 1.2rem;
+				font-size: 1rem;
 				letter-spacing: -0.5px;
-				text-align: left;
 
 				span {
-					border-bottom: 3px solid $blue;
-					padding: 0 0.8rem;
+					border-bottom: 5px solid $tertiary;
+					background-color: $tertiary;
+					padding: 0.3rem 0.7rem 0 0.7rem;
+					margin-left: 0.5rem;
 				}
 			}
 		}
@@ -75,16 +89,21 @@
 		}
 
 		.state {
+			position: absolute;
+			bottom: 0;
+
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			gap: 0.5rem;
 			text-align: center;
 			text-transform: lowercase;
-			padding: 0.3rem;
-			background-color: $disabled;
+			padding: 0 0 0 0.5rem;
+			border-radius: 0 20px 0 0;
+			background-color: rgba($color: $error, $alpha: 0.7);
 			& > * {
 				font-weight: 900;
+				font-size: 0.7rem;
 				letter-spacing: -1px;
 			}
 		}

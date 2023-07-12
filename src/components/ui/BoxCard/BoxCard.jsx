@@ -13,6 +13,7 @@ import * as Yup from 'yup';
 import styles from './BoxCard.module.scss';
 import UploadImg from "../UploadImg/UploadImg";
 import { formatPrice } from "../../../utils/utils";
+import vars from '../../../styles/variables.scss';
 
 const BoxCard = function ({
 	title,
@@ -62,7 +63,11 @@ const BoxCard = function ({
 						className={styles.cardmedia}
 						image={img}		
 						alt={alt}
-					/>
+					>
+						<Box className={styles.pricetag}>
+							$ {formatPrice(price)}
+						</Box>
+						</CardMedia>
 				</Box>
 				<CardContent className={styles.cardcontent}>
 					<Typography className={styles.cardtitle}
@@ -76,42 +81,20 @@ const BoxCard = function ({
 							</Typography>
 						</Grid>
 							{userType === "Business" ? (
-								<>
-								<Grid item xs={12} mx={6} mt={2}>
-								<Typography mt={2} className={styles.carddetails}>
-									${formatPrice(price)}
-								</Typography>
-								</Grid>
-								<Grid item xs={12} mx={6} mt={2}>
+								<Grid item xs={12} mt={2}>
 									<Typography className={styles.stock}>
 										stock:<span>{stock}</span>
 									</Typography>
 								</Grid>
-								</>
 							):(
-								<>
-								<Grid item xs={12}>
-								<Grid container justifyContent="center">
-									<Grid item xs={6}>
-										<Typography mt={6} className={styles.carddetails}>
-											${formatPrice(price)}
-										</Typography>
-									</Grid>
+								<Grid item xs={12} mt={2} mx={8}>
+									<CSelect
+										name="quantity"
+										label="cantidad"
+										formik={formik}
+										selectOption={options}
+									/>
 								</Grid>
-							</Grid>
-								 <Grid item xs={12}>
-								 <Grid container justifyContent="center">
-									 <Grid item xs={6} mt={4}>
-										 <CSelect
-											 name="quantity"
-											 label="cantidad"
-											 formik={formik}
-											 selectOption={options}
-										 />
-									 </Grid>
-								 </Grid>
-							 </Grid>
-							 </>
 							)}
 					</Grid>
 				</CardContent>

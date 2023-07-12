@@ -12,6 +12,7 @@ import ProductService from '../services/ProductService';
 import useLoading from '../hooks/useLoading';
 import BusinessService from '../services/BusinessService';
 import useSnackbar from '../hooks/useSnackbar';
+import vars from '../styles/variables.scss';
 
 const BoxContainer = function () {
 	const navigate = useNavigate();
@@ -28,12 +29,6 @@ const BoxContainer = function () {
 	const [activeProfile, setActiveProfile] = useState();
 	const setSnackbar = useSnackbar();
 	const [image, setImage] = useState();
-
-	useEffect(() => {
-		console.log("IMAGEN", image);
-		console.log("BOX", box);
-		console.log(boxes);
-	}, [image, box, boxes])
 	
 	useEffect(() => {
 		setLoading(true);
@@ -85,13 +80,12 @@ const BoxContainer = function () {
 	};
 
 	const editBox = (values, image) => {
-		console.log("IMAGEN QUE SE MANDA AL SERVICIO", image);
 		setLoading(true);
 		ProductService.editProduct(businessId, values,image)
 		.then(() => {
+			navigate(0);
 			setLoading(false);
 			setSnackbar({message: 'El box fue editado correctamente', severity: 'success'})
-			// navigate(0);
 		})
 		.catch((error) => {
 			console.log(error)
@@ -129,7 +123,6 @@ const BoxContainer = function () {
 			<Box className={styles.btnContainer}>
 				<CButton
 					title="Crear box"
-					sx={{fontSize: '1.2rem'}}
 					variant="contained"
 					onClick={()=> {setOpenModalCreate(true)}}
 				/>
@@ -142,8 +135,8 @@ const BoxContainer = function () {
 						</Typography>
 						{!activeProfile && (
 						<>
-							<Typography mt={4} mb={2}>
-								podés crear tu box haciendo clic en crear box, <br/> pero tené en cuenta que para que tu comercio sea habilitado para vender, deberás
+							<Typography mt={4}>
+								podés crear tu box haciendo clic en <span className={styles.important}> crear box </span>, <br/> pero tené en cuenta que para que tu comercio sea habilitado para vender, deberás
 							</Typography>
 							<CButton 
 							title="Completar tu perfil"

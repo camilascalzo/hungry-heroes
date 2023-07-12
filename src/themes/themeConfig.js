@@ -95,7 +95,7 @@ const theme = createTheme ( {
 			styleOverrides: {
 				root: {
 					fontWeight: '900',
-					fontSize: '1.2rem',
+					fontSize: '1rem',
 					textTransform: 'lowercase',
 					letterSpacing: '-1px'
 				}
@@ -116,7 +116,7 @@ const theme = createTheme ( {
 					'& > *': {
 						fontWeight: '900 !important',
 						color: vars.secondary,
-						fontSize: '1.2rem !important',
+						fontSize: '1rem !important',
 						letterSpacing: '-0.5px',
 						backgroundColor: 'transparent'
 					}
@@ -128,10 +128,10 @@ const theme = createTheme ( {
 				tooltip: {
 					backgroundColor: vars.blue,
 					color: vars.secondary,
-					fontSize: '1.1rem',
+					fontSize: '0.9rem',
 					fontWeight: '900',
 					textTransform: 'lowercase',
-					letterSpacing: '-1px',
+					letterSpacing: '-0.5px',
 					borderRadius: '0'
 				}
 			}
@@ -140,7 +140,7 @@ const theme = createTheme ( {
 			styleOverrides: {
 				root: {
 					fontWeight: '900',
-					fontSize: '1.2rem'
+					fontSize: '1rem !important'
 				}
 			}
 		},
@@ -150,7 +150,7 @@ const theme = createTheme ( {
 					backgroundColor: vars.primary,
 					'& > *' :{
 						fontWeight: '900 !important',
-						fontSize: '1.2rem !important'
+						fontSize: '1rem !important'
 					}
 				}
 			}

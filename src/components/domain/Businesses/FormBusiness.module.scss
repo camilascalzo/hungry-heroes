@@ -1,18 +1,16 @@
 @import '../../../styles/variables.scss';
 
 .container {
-	// background-color: rgba($color: $primary, $alpha: 0.9);
 	padding: 0 5rem;
 	max-width: 60%;
-	// z-index: 100;
+	text-transform: lowercase;
 
 	.title {
-		margin-top: 3rem;
-		margin-bottom: 3rem;
-		font-size: 2rem;
+		margin-top: 1.5rem;
+		margin-bottom: 2rem;
+		font-size: 1.8rem;
 		font-weight: 900;
 		letter-spacing: -1px;
-		text-transform: lowercase;
 	}
 
 	.btncontainer {

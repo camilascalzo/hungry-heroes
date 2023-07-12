@@ -31,12 +31,18 @@ const RemoveAccount = function () {
 	return (
 		<MasterCard
 			headerTitle="Eliminar cuenta"
-			headerSubtitle="La eliminación de la cuenta implica la pérdida permanente de todos tus datos, incluyendo la información personal y el historial asociado a tu perfil, así que no podrás acceder a tu cuenta ni recuperar ninguna información una vez que se complete el proceso de eliminación."
+			headerSubtitle={
+        <span style={{ lineHeight: '1.9' }}>
+          La eliminación de la cuenta implica la pérdida permanente de todos tus datos, incluyendo la información personal y el historial asociado a tu perfil, así que
+          <span style={{ borderBottom: '8px solid #e3f54a' }}> no podrás acceder a tu cuenta ni recuperar ninguna información</span>
+          una vez que se complete el proceso de eliminación.
+        </span>
+      }
 		>
 			<CButton
 				type="submit"
 				title="Confirmo que deseo eliminar mi cuenta"
-				sx={{fontSize: '1.2rem'}}
+				sx={{fontSize: '1rem'}}
 				onClick={onRemoveAccount}
 			/>
 		</MasterCard>

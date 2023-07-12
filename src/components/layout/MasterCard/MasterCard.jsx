@@ -27,12 +27,12 @@ MasterCard = ({ headerTitle, headerSubtitle, children, footerBtnTitle, footerBtn
 				{children}
 			</Box>
 			{footerComponent && (
-				<Box>
+				<Box className={styles.btncontainer}>
 					<CButton 
 						variant="text"
 						title={footerBtnTitle}
 						startIcon={footerBtnIcon}
-						sx={{fontSize: '1rem'}}
+						// sx={{fontSize: '1rem'}}
 						onClick={onClick}
 					/>
 				</Box>

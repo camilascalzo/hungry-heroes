@@ -8,9 +8,9 @@ const verifyAccount = (token) => {
 	return api.post(urlService);
 }
 
-const login = (email, password) => {
+const login = (body) => {
 	const urlService = apiUrl.getUrlService('auth.login');
-	return api.post(urlService, { email, password });
+	return api.post(urlService, body);
 };
 
 const logout = () => {

@@ -9,13 +9,14 @@ import SaleService from '../services/SaleService';
 import useSnackbar from '../hooks/useSnackbar';
 import styles from './BoxContainer.module.scss';
 import ROUTES_ENUM from '../enums/routesEnum';
+import ProductService from '../services/ProductService';
 
 const BoxContainerForClient = function () {
 	const navigate = useNavigate();
 	const formikRef = useRef();
 	const setLoading = useLoading();
 	const [openModalBuy, setOpenModalBuy] = useState(false);
-	const [openPurchaseModal, setOpenPurchaseModal] = useState(true);
+	const [openPurchaseModal, setOpenPurchaseModal] = useState(false);
 	const [box, setBox] = useState(null);
 	const [quantity, setQuantity] = useState();
 	const [saleDetail, setSaleDetail] = useState();
@@ -31,22 +32,26 @@ const BoxContainerForClient = function () {
 	}, [boxes]);
 
 	const handleBuyBox = (box, values) => {
+		console.log(box, values)
 		setLoading(true);
 		setQuantity(values.quantity);
-		SaleService.modifyStock(box.productId, values.quantity)
-		.then((response) => {
-			console.log(response);
-			setOpenModalBuy(true);
-			setLoading(false);
-		})
-		.catch((error) => {
-			console.log(error);
-			setLoading(false);
-			setSnackbar({message: error.message, severity: 'error'});
-		})
+		setOpenModalBuy(true);
+		setLoading(false);
+		// SaleService.modifyStock(box.productId, values.quantity)
+		// .then((response) => {
+		// 	console.log(response);
+		// 	setOpenModalBuy(true);
+		// 	setLoading(false);
+		// })
+		// .catch((error) => {
+		// 	console.log(error);
+		// 	setLoading(false);
+		// 	setSnackbar({message: error.message, severity: 'error'});
+		// })
 	};
 
-		const confirmPurchase = (values) => {
+		const confirmPurchase= () => {
+			console.log(box, quantity)
 		  setLoading(true);
 			SaleService.createSale(userClientId, box, quantity)
 			.then((response) => {
@@ -58,6 +63,14 @@ const BoxContainerForClient = function () {
 					  .then(() => {
 							setLoading(false);
 					    setOpenPurchaseModal(true);
+							console.log("llamando a getproducst")
+							ProductService.getProductsByBusinessId(box.userBusinessId)
+							.then((response) => {
+								console.log(response);
+							})
+							.catch((error) => {
+								console.log(error)
+							})
 						})
 						.catch((error) => {
 							console.log(error);
@@ -110,6 +123,7 @@ const BoxContainerForClient = function () {
 			>
 				<FormSale
 				  onSubmit={confirmPurchase}
+				  // onSubmit={handleBuyBox}
 					formikRef={formikRef}
 				/>
 			</CDialog>
@@ -118,9 +132,9 @@ const BoxContainerForClient = function () {
 				open={openPurchaseModal}
 				closeModal={() => setOpenPurchaseModal(false)}
 				btnDialogTitle="Ver mis compras"
-				btnDialogOnClick={{
-					action: navigate(ROUTES_ENUM.SALES)
-				}}
+				// btnDialogOnClick={{
+				// 	action: navigate(ROUTES_ENUM.SALES)
+				// }}
 
 			>
         <Box className={styles.saledetailcontainer}>
@@ -129,16 +143,16 @@ const BoxContainerForClient = function () {
 					</Typography>
 					<Box className={styles.datacontainer}>
 						<Typography className={styles.saledata}>
-							Comercio:<span> {saleDetail?.fantasyName || 'Salvaje'}</span>
+							Comercio:<span> {saleDetail?.fantasyName || null }</span>
 						</Typography>
 						<Typography className={styles.saledata}>
-							Box: <span>{saleDetail?.boxName || 'minitacos'}</span>
+							Box: <span>{saleDetail?.boxName || null }</span>
 						</Typography>
 						<Typography className={styles.saledata}>
-							Cantidad: <span>{saleDetail?.quantity || '2'}</span>
+							Cantidad: <span>{saleDetail?.quantity || null }</span>
 						</Typography>
 						<Typography className={styles.saledata}>
-							Total: <span>{saleDetail?.total || '1080'}</span>
+							Total: <span>{saleDetail?.total || null }</span>
 						</Typography>
 					</Box>
 					<Typography className={styles.cta}> 

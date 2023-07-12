@@ -50,7 +50,7 @@ const Header = function () {
 						onClick={handleClick}
 						title="menú"
 						className={styles.menubtn}
-						sx={{fontSize: "2rem", color: '#fff', border: 'solid 2px #fff'}}
+						sx={{fontSize: "1.2rem", color: '#fff', border: 'solid 2px #fff'}}
 					/>
 					<Menu
 						open={open}
@@ -72,7 +72,7 @@ const Header = function () {
 										variant="text"
 										title="Inicio"
 										startIcon={<Home />}
-										sx={{ fontSize: '1.2rem'}}
+										sx={{ fontSize: '0.9rem'}}
 										onClick={() => navigate(getHome(userRole))}
 									/>
 								</ListItemText>
@@ -82,7 +82,7 @@ const Header = function () {
 										variant="text"
 										title="Perfil"
 										startIcon={<ManageAccountsRounded />}
-										sx={{ fontSize: '1.2rem'}}
+										sx={{ fontSize: '0.9rem'}}
 										onClick={() => navigate(ROUTES_ENUM.PROFILE)}
 									/>
 								</ListItemText>
@@ -92,7 +92,7 @@ const Header = function () {
 									<CButton
 										variant="text"
 										title="Mis compras"
-										sx={{ fontSize: '1.2rem'}}
+										sx={{ fontSize: '0.9rem'}}
 										startIcon={ <ShoppingCart /> }
 										onClick={() => navigate(ROUTES_ENUM.SALES)}
 									/>
@@ -102,7 +102,7 @@ const Header = function () {
 								<CButton
 									variant="text"
 									title="Mis ventas"
-									sx={{ fontSize: '1.2rem'}}
+									sx={{ fontSize: '0.9rem'}}
 									startIcon={ <ShoppingCart /> }
 									onClick={() => navigate(ROUTES_ENUM.SALES)}
 								/>
@@ -112,7 +112,7 @@ const Header = function () {
 								<CButton
 									variant="text"
 									title="Cambiar contraseña"
-									sx={{ fontSize: '1.2rem'}}
+									sx={{ fontSize: '0.9rem'}}
 									startIcon={ <LockRounded /> }
 									onClick={() => navigate(ROUTES_ENUM.AUTH_CHANGE_PASS)}
 								/>
@@ -121,7 +121,7 @@ const Header = function () {
 								<CButton
 									variant="text"
 									title="Cerrar sesión"
-									sx={{ fontSize: '1.2rem'}}
+									sx={{ fontSize: '0.9rem'}}
 									startIcon={ <ExitToAppRounded /> }
 									onClick={onLogout}
 								/>
@@ -131,7 +131,7 @@ const Header = function () {
 								<CButton
 									variant="text"
 									title="Eliminar cuenta"
-									sx={{ fontSize: '1rem'}}
+									sx={{ fontSize: '0.8rem'}}
 									startIcon={ <PersonRemoveRounded /> }
 									onClick={() => navigate(ROUTES_ENUM.REMOVE_ACCOUNT)}
 								/>

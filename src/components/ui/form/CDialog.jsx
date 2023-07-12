@@ -13,7 +13,6 @@ const CDialog = function({
 	open,
 	closeModal,
 	fullWidth,
-	maxWidth,
 	btnDialogTitle,
 	btnDialogOnClick,
 	formikRef
@@ -47,7 +46,6 @@ const CDialog = function({
 			open={open}
 			onClose={afterModalClose}
 			fullWidth={fullWidth}
-			maxWidth={maxWidth}
 			disableEscapeKeyDown
 			PaperProps={{
 				elevation: 1
@@ -73,7 +71,7 @@ const CDialog = function({
 							type="submit"
 							title={btnDialogTitle}
 							onClick={handleClick}
-							sx={{fontSize: '1.2rem', marginTop: '2rem'}}
+							sx={{fontSize: '1rem', marginTop: '2rem'}}
 						/>
 					</DialogActions>
 				</DialogContent>
@@ -87,7 +85,6 @@ CDialog.propTypes = {
 	closeModal: PropTypes.func.isRequired,
 	title: PropTypes.string.isRequired,
 	fullWidth: PropTypes.bool,
-	maxWidth: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
 	children: PropTypes.node.isRequired,
 	formikRef: PropTypes.oneOfType([
     PropTypes.shape(FORMIK_PROPTYPES).isRequired,
@@ -102,7 +99,6 @@ CDialog.propTypes = {
 };
 
 CDialog.defaultProps = {
-	maxWidth: 'sm',
 	fullWidth: false,
 	formikRef: false,
 	btnDialogOnClick: false

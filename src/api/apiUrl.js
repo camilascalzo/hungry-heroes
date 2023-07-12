@@ -8,7 +8,7 @@ const apiUrl = {
 		requestPass: `${API}/Accounts/forgot-password`,
 		deleteAccount: `${API}/Accounts/:id`,
 		changePassword: `${API}/Accounts/change-password`,
-		verifyRegistrationToken: `${API}/Accounts/verify-email?token=:token`
+		verifyRegistrationToken: `${API}/Accounts/verify-email/:token`
 	},
 	business: {
 		getBusinesses: `${API}/Business/All`,

@@ -63,7 +63,7 @@ const ChangePass = function () {
 							<Grid item xs={12}>
 								<CTextField
 									required
-									label="Usuario"
+									label="email"
 									name="email"
 									disabled
 									formik={formik}
@@ -99,7 +99,7 @@ const ChangePass = function () {
 									title="Guardar contraseña"
 									variant="outlined"
 									color="secondary"
-									sx={{fontSize: '1.2rem'}}
+									sx={{fontSize: '1rem'}}
 								/>
 							</Grid>
 						</Grid>

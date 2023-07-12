@@ -18,19 +18,24 @@ const CreateUserConfirmation = function () {
 		<MasterCard
 			logoComponent
 			headerTitle="¡Ya sos parte de la liga!"
-			headerSubtitle={`Te enviamos un e-mail a ${email} para que puedas ingresar a tu cuenta`}
+			headerSubtitle={
+				<span>
+					Te enviamos un e-mail a <span style={{ borderBottom: '8px solid #e3f54a' }}>{ email }</span> para que puedas ingresar a tu cuenta
+				</span>
+			}
+
 			footerComponent
 			footerBtnTitle='Ir al login'
 			footerBtnIcon={ <LoginRounded /> }
 			onClick={() => navigate(ROUTES_ENUM.AUTH_LOGIN)}
 		>
-			<Typography mb={2} variant='subtitle1'>
+			<Typography mb={2}>
 				¿No recibiste el e-mail?
 			</Typography>
 			<CButton
 				type="submit"
 				title="Reenviar e-mail"
-				sx={{fontSize: '1.2rem'}}
+				sx={{fontSize: '1rem'}}
 				onClick={reSend}
 			/>
 		</MasterCard>

@@ -3,16 +3,16 @@ import AuthService from "../services/AuthService";
 
 const AboutPage = function () {
 
-	// const token = '6FBCBEF9D0B034C7C1B8E48F61BD1C1664FDBB242C06DBA62B4A8A065EBE8ABB0E411F3096BFD82A6361CA792AD11FE3389565DD74F329F747669716F3FD920A';
+	const token = '735D069AB9EFDB1CE1B4C9791B2B515982516A82F8B4D90A84E6044FB9848345745F863D067FC47F1FF1F0D1AC42C9A91C7F5DC059101034CC9DC0195FA842B7';
 
-	// AuthService.verifyAccount(token)
-	// .then((response) => {
-	// 	console.log(response)
+	AuthService.verifyAccount(token)
+	.then((response) => {
+		console.log(response)
 		
-	// })
-	// .catch((error) => {
-	// 	console.log(error)
-	// })
+	})
+	.catch((error) => {
+		console.log(error)
+	})
 
   return (
     <AboutContainer />

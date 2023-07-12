@@ -6,6 +6,7 @@ const Spinner = function ({ open }) {
   return (
     <Backdrop
       open={open}
+			sx={{zIndex:'200'}}
     >
       <CircularProgress color="inherit" />
     </Backdrop>

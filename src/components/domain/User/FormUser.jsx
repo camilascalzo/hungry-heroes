@@ -49,7 +49,7 @@ const FormUser = function () {
 
 	return (
 		<Box className={styles.container}>
-			<Typography className={styles.title} mb={3}>Completá los datos y unite a la liga hambrienta</Typography>
+			<Typography className={styles.title} textAlign='center' mb={3}>Completá los datos y unite a la liga hambrienta</Typography>
 			<Formik
 				initialValues={{
 					email: '',
@@ -73,7 +73,7 @@ const FormUser = function () {
 						>
 							<Grid item xs={12}>
 								<CTextField
-									label="Usuario"
+									label="email"
 									name="email"
 									formik={formik}
 								/>
@@ -94,8 +94,9 @@ const FormUser = function () {
 									formik={formik}
 								/>
 							</Grid>
-							<Grid item xs={12}>
-								<FormControl component="fieldset" className={styles.error}>
+							<Grid item xs={12} textAlign='center'>
+								<FormControl 
+								component="fieldset" className={styles.error}>
 									<RadioGroup 
 										name='role'
 										value={formik.values.role}
@@ -125,7 +126,7 @@ const FormUser = function () {
 									<CButton
 										type="submit"
 										title="Crear usuario"
-										sx={{fontSize: '1.2rem'}}
+										sx={{fontSize: '1rem'}}
 									/>
 							</Grid>
 						</Grid>

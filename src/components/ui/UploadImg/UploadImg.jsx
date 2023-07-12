@@ -13,7 +13,9 @@ const UploadImg = function({
 	type,
 	isEdit,
 	title,
-	subtitle
+	subtitle,
+	disabled,
+	noClick
 }) {
 
 	console.log(isEdit)
@@ -42,46 +44,43 @@ const UploadImg = function({
 		accept: {
 			'image/jpeg': ['.jpg', '.jpeg'],
 			'image/png': ['.png'],
-			// 'image/svg+xml': ['.svg']
+			'image/svg+xml': ['.svg']
 		},
-		maxFiles: 1
+		maxFiles: 1,
+		disabled:disabled,
+		noClick:noClick
 	});
 
 	return (
-		<Grid {...getRootProps()}>
+		<Grid {...getRootProps()} className={styles.container}>
 			<input {...getInputProps()}/>
 			{!selectedImg ? (
 				<>
 				{type === 'text' && (
 					<>
 					<Box className={styles.btncontainer}>
-						{/* <Typography 
-						  variant='button'
-							className={styles.btn}>
-								{title}
-						</Typography> */}
-						{/* <Icon><AddAPhotoOutlined /></Icon> */}
-					<CButton
-					  endIcon={<AddAPhotoOutlined color='error'/>}
-						title={title}
-						variant='text'
-						sx={{fontSize: '1.2rem', opacity: '0.7', textAlig: 'right'}}
-					/>
-					<Typography 
-					  variant='caption'>
-							{subtitle}
-					</Typography>
+						<CButton
+						  disabled={disabled}
+							endIcon={<AddAPhotoOutlined color='error'/>}
+							title={title}
+							variant='text'
+							sx={{fontSize: '1rem', opacity: '0.7', textAlig: 'right'}}
+						/>
+						<Typography 
+							variant='caption'>
+								{subtitle}
+						</Typography>
 					</Box>
 					</>
 				)}
 				{type === 'icon' && (
 					<CIconButton 
+					  disabled={disabled}
 					  icon={<AddAPhotoOutlined />}
 						title="cambiar imagen"
 					/>
 				)}
 				</>
-
 			):(
 				<Box className={styles.selectedimgcontainer}>
 					{isEdit ? (
@@ -100,11 +99,15 @@ const UploadImg = function({
 						</Box>
 					)}
 					<CIconButton 
+					  disabled={disabled}
 					  icon={<AddAPhotoOutlined />}
 						title="cambiar imagen"
 					/>
 				</Box>
 			)}
+			<Typography variant='caption' className={styles.caption}>
+				*jpg, jpeg, svg
+			</Typography>
 		</Grid>
 	);
 };

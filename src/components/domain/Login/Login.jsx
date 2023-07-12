@@ -13,7 +13,6 @@ import { LOCAL_STORAGE } from '../../../utils/constants';
 import useLoading from '../../../hooks/useLoading';
 import { getHome } from '../../../utils/navUtils';
 import useSnackbar from '../../../hooks/useSnackbar';
-import handleError from '../../../utils/errors';
 
 const Login = function () {
   const navigate = useNavigate();
@@ -22,13 +21,14 @@ const Login = function () {
 	const setSnackbar = useSnackbar();
 
   const VALIDATION = Yup.object().shape({
-    email: Yup.string().email('Usuario inválido - usuario@email.com').required('Campo obligatorio'),
-    password: Yup.string().required('Campo obligatorio')
+    email: Yup.string().email('email inválido').required('Campo obligatorio'),
+    password: Yup.string().min(2, 'Mínimo 8 caracteres').required('Campo obligatorio')
   });
 
-	const onLogin = ({ email, password }) => {
+	const onLogin = (values) => {
+		console.log(values)
 		setLoading(true);
-		AuthService.login(email, password)
+		AuthService.login(values)
 			.then((userLogged) => {
 				localStorage.setItem(LOCAL_STORAGE.TOKEN_LOGIN, userLogged.jwtToken);
 				localStorage.setItem(LOCAL_STORAGE.USER_EMAIL, userLogged.email);
@@ -40,10 +40,6 @@ const Login = function () {
 				navigate(getHome(userLogged.role));
 				setLoading(false);
 			})
-			// .then ((userLogged) => {
-			// 	navigate(getHome(userLogged.role));
-			// 	setLoading(false);
-			// })
 			.catch((error) => {
 				console.log(error);
 				setSnackbar({message: error.message, severity: 'error'});
@@ -58,7 +54,7 @@ const Login = function () {
         className={styles.logincontainer}
       >
 				<Box className={styles.logocontainer}>
-					<img src={logo} alt="" />
+					<img src={logo} alt="logo Hungry Heroes" />
 				</Box>
         <Formik
 				initialValues={{
@@ -78,7 +74,7 @@ const Login = function () {
             >
               <Grid item xs={12}>
                 <CTextField
-                  label="Usuario"
+                  label="Email"
                   name="email"
 									formik={formik}
                 />
@@ -95,7 +91,7 @@ const Login = function () {
                 <CButton
                   type="submit"
 									title="Ingresar"
-									sx={{fontSize: '1.2rem'}}
+									sx={{fontSize: '1rem'}}
                 />
               </Grid>
             </Grid>
@@ -107,15 +103,16 @@ const Login = function () {
 						<CButton
 							title="Olvidé mi contraseña"
 							variant="text"
-							sx={{fontSize:"0.9rem"}}
 							onClick={() => navigate(ROUTES_ENUM.AUTH_REQUEST_PASS)}
+							disableFocusRipple
+							disableRipple
 						/>
 					</Box>
-					<Box className={styles.linkaccount}>
+					<Box>
 						<CButton 
 							title='Creá tu cuenta'
 							variant='contained'
-							sx={{fontSize: '1.4rem'}}
+							sx={{fontSize: '1.1rem'}}
 							onClick={() => navigate(ROUTES_ENUM.CREATE_ACCOUNT)}
 						/>
 					</Box>
@@ -126,7 +123,6 @@ const Login = function () {
 					<CButton
 						title="Sobre nosotros"
 						variant="text"
-						sx={{ fontSize: '2.2rem' }}
 						onClick={() => navigate(ROUTES_ENUM.ABOUT)}
 					/>
 				</Box>

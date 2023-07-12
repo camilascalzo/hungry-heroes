@@ -43,7 +43,7 @@ const BusinessCard = function ({
 				>
 					<CButton
 						title="Ver boxes"
-						sx={{fontSize: '1.2rem'}}
+						sx={{fontSize: '1rem'}}
 						onClick={() => onSelect()}
 					/>
 				</CardActions>
