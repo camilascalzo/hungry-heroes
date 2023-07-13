@@ -1,7 +1,7 @@
 @import '../../../styles/variables.scss';
 
 .container {
-	padding: 5rem;
+	padding: 0 5rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -10,9 +10,9 @@
 	opacity: 0.9;
 
 	.maintitle {
-		margin-top: 3rem;
-		margin-bottom: 6rem;
-		font-size: 2rem;
+		margin-top: 1.5rem;
+		margin-bottom: 3rem;
+		font-size: 1.8rem;
 		font-weight: 900;
 		letter-spacing: -1px;
 		text-transform: lowercase;
@@ -22,7 +22,7 @@
 		& > * {
 			text-transform: lowercase;
 			letter-spacing: -1px;
-			font-size: 1.2rem;
+			font-size: 1rem;
 			font-weight: 900;
 		}
 	}
@@ -35,15 +35,20 @@
 		
 		.card {
 			padding: 1rem 2rem;
+			width: 200px;
+			min-height: 100px;
 			background-color: $blue;
 			box-shadow: 0 3px 6px #0000001c;
 			border-radius: 0;
+			position: relative;
 	
 			.datacontainer {
-				display: flex;
+				text-align: left;
 				text-transform: lowercase;
-				font-size: 1.1rem;
-				margin-bottom: 0.5rem;
+				margin-bottom: 1rem;
+				& > * {
+					line-height: 1;
+				}
 
 				.formikcontainer {
 					display: flex;
@@ -53,23 +58,39 @@
 			}
 	
 			.title {
-				margin-right: 1rem;
-				font-weight: 900;
-				letter-spacing: -1px;
-				width: auto;
+				font-size: 0.8rem;
 			}
-	
-			.statedelivered {
-				font-weight: 900;
-				letter-spacing: -1px;
-				background-color: $green;
-				}
-				.statepending {
-					font-weight: 900;
-					letter-spacing: -1px;
-					background-color: $pink;
-				}
-			}
-	}
 
+			.text {
+				font-weight: 900;
+				letter-spacing: -1px;
+				font-size: 0.9rem;
+
+				.important {
+					border-bottom: 8px solid $tertiary;
+				}
+			}
+
+			.state {
+			position: absolute;
+			top: 0;
+			right: 0;
+			text-align: center;
+			text-transform: lowercase;
+			& > * {
+				border-radius:0 0 0 20px;
+				padding: 0.5rem;
+				font-weight: 900;
+				font-size: 0.7rem;
+				letter-spacing: -0.5px;
+			}
+				.statedelivered {
+					background-color: rgba($color: $green, $alpha: 0.7);
+					}
+				.statepending {
+					background-color: rgba($color: $error, $alpha: 0.7);
+				}
+			}
+		}
 	}
+}

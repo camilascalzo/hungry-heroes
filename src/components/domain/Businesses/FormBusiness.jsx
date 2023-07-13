@@ -114,7 +114,7 @@ const FormBusiness = function({
 			>
 				{(formik) => (
 					<Form onChange={handleChange}>
-						<Grid container columnSpacing={3} rowSpacing={3}>
+						<Grid container columnSpacing={3} rowSpacing={2}>
 							<Grid item xs={6}>
 								<CTextField
 									disabled={disabledField}
@@ -208,7 +208,7 @@ const FormBusiness = function({
 									formik={formik}
 								/>
 							</Grid>
-							<Grid item xs={12}>
+							<Grid item xs={6}>
 								{business.activeProfile ? (
 									<Box className={styles.uploadimgcontainer}>
 										<Box  className={styles.imgcontainer}>
@@ -237,7 +237,7 @@ const FormBusiness = function({
 							<Box  className={styles.btncontainer}>
 								{(!enableBtn && (
 									<CButton
-										title="habilitar editar"
+										title="habilitar edición"
 										sx={{fontSize: '1rem'}}
 										onClick={handleEdit}
 									/>

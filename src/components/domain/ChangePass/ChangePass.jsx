@@ -33,7 +33,6 @@ const ChangePass = function () {
 		AuthService.changePassword(userId, values)
 		.then(() => {
 			setLoading(false);
-			setSnackbar({message: 'La contraseña se actualizó correctamente', severity: 'error'});
 			navigate(ROUTES_ENUM.AUTH_CHANGE_PASS_CONFIRMATION);
 		})
 		.catch((error) => {

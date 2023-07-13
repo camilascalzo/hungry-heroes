@@ -57,20 +57,10 @@ const Sales = function({
 							</Typography>
 						</Box>
 						<Box className={styles.datacontainer}>
-							<Typography className={styles.title}>Comercio</Typography>
-							<Typography className={styles.text}>
-								{sale.fantasyName}
-							</Typography>
-						</Box>
-						<Box className={styles.datacontainer}>
 							<Typography className={styles.title}>Box</Typography>
 							<Typography className={styles.text}>
-								{sale.boxName}
+								{sale.boxName} x {sale.quantity}
 							</Typography>
-						</Box>
-						<Box className={styles.datacontainer}>
-							<Typography className={styles.title}>Cantidad</Typography>
-							<Typography className={styles.text}>{sale.quantity}</Typography>
 						</Box>
 						<Box className={styles.datacontainer}>
 							<Typography className={styles.title}>Total</Typography>
@@ -80,12 +70,20 @@ const Sales = function({
 						</Box>
 						<Box>
 							{userType === "Client" ? (
-								<Box className={styles.datacontainer}>
-								<Typography className={styles.title}>Código</Typography>
-								<Typography className={styles.data}>
-									{sale.code}
+							<>
+							<Box className={styles.datacontainer}>
+								<Typography className={styles.title}>Comercio</Typography>
+								<Typography className={styles.text}>
+									{sale.fantasyName}
 								</Typography>
 								</Box>
+							<Box className={styles.datacontainer}>
+								<Typography className={styles.title}>Código de compra</Typography>
+								<Typography className={styles.text}>
+									<span className={styles.important}>{sale.code}</span>
+								</Typography>
+							</Box>
+							</>
 							) : (
 								<>
 								<Box className={styles.datacontainer}>
@@ -128,7 +126,7 @@ const Sales = function({
 								</>
 							)}
 						</Box>
-						<Box className={styles.datacontainer}>
+						<Box className={styles.state}>
 							{sale.delivered ? (
 								<Typography p="0 0.5rem" className={styles.statedelivered}>Entregado</Typography>
 							): (

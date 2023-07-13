@@ -13,6 +13,7 @@ const VerifyRegistrationTokenPage = function () {
 	const setLoading = useLoading();
 	const [displayConfirmation, setDisplayConfirmation] = useState();
 	// const token = recuperar desde url
+	// http://localhost:3000/Accounts/verify-email?token=62F05474BA68DD70B50F5962F22A87FA97A3401CDBB471C7408BDD5A493BD93DE8B3806ADDB963F5C37B019658CE7D8899029A49939FCE13CF9B4BE6128E5E26
 
 	const verifyAccount = () => {
 		setLoading(true);

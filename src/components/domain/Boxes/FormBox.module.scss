@@ -3,15 +3,16 @@
 .uploadimgcontainer {
 	display: flex;
 	align-items: flex-end;
-	margin-top: 1.5rem;
-	height: 100px;
-	overflow: hidden;
+	justify-content: center;
+	gap: 1rem;
+	margin-top: 1rem;
 	position: relative;
 
 	.imgcontainer {
 		height: 100px;
 		width: 200px;
-		margin-right: 1rem;
+		position: absolute;
+		top: 0;
 	
 		img {
 			height: 100%;

@@ -1,5 +1,5 @@
 import React from 'react';
-import ChangePassConfirmationContainer from '../containers/RequestPassConfirmationContainer';
+import ChangePassConfirmationContainer from '../containers/ChangePassConfirmationContainer';
 
 const ChangePassConfirmationPage = function () {
 	return (

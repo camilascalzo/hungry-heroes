@@ -10,12 +10,12 @@ const ChangePassConfirmation = function () {
 	return (
 		<MasterCard
 			logoComponent
-			headerTitle="Ya cambiamos tu contraseña"
+			headerTitle="¡Ya cambiamos tu contraseña!"
 			headerSubtitle={`Por favor, volvé a ingresar a tu cuenta`}
 		>
 			<CButton 
 				title="Ingresar a mi cuenta"
-				sx={{fontSize: '1.2rem'}}
+				sx={{fontSize: '1rem'}}
 				onClick={() => navigate(ROUTES_ENUM.AUTH_LOGIN)}
 			/>
 		</MasterCard>

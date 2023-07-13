@@ -64,11 +64,13 @@ const UploadImg = function({
 							endIcon={<AddAPhotoOutlined color='error'/>}
 							title={title}
 							variant='text'
-							sx={{fontSize: '1rem', opacity: '0.7', textAlig: 'right'}}
+							sx={{fontSize: '0.8rem', opacity: '0.7', textAlig: 'right'}}
 						/>
-						<Typography 
-							variant='caption'>
+						<Typography className={styles.subtitle}>
 								{subtitle}
+						</Typography>
+						<Typography variant='caption' className={styles.caption}>
+							*jpg, jpeg, svg
 						</Typography>
 					</Box>
 					</>
@@ -76,7 +78,7 @@ const UploadImg = function({
 				{type === 'icon' && (
 					<CIconButton 
 					  disabled={disabled}
-					  icon={<AddAPhotoOutlined />}
+					  icon={<AddAPhotoOutlined className={styles.editbtn}/>}
 						title="cambiar imagen"
 					/>
 				)}
@@ -100,14 +102,13 @@ const UploadImg = function({
 					)}
 					<CIconButton 
 					  disabled={disabled}
-					  icon={<AddAPhotoOutlined />}
+						disableFocusRipple
+						disableRipple
+					  icon={<AddAPhotoOutlined  className={styles.editbtn}/>}
 						title="cambiar imagen"
 					/>
 				</Box>
 			)}
-			<Typography variant='caption' className={styles.caption}>
-				*jpg, jpeg, svg
-			</Typography>
 		</Grid>
 	);
 };
